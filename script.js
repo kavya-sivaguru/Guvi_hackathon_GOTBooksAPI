@@ -1,6 +1,6 @@
 const booksApiUrl = "https://www.anapioficeandfire.com/api/books";
-const charApiUrl = "https://www.anapioficeandfire.com/api/characters";
-let char = [];
+// const charApiUrl = "https://www.anapioficeandfire.com/api/characters";
+// let char = [];
 
 
 const getBookData = async () => {
@@ -17,19 +17,19 @@ const getBookData = async () => {
 }
 getBookData();
 
-const getCharData = async () => {
-    try {
-        const resp = await fetch(charApiUrl);
-        const data = await resp.json();
+// const getCharData = async () => {
+//     try {
+//         const resp = await fetch(charApiUrl);
+//         const data = await resp.json();
 
-        console.log(data)
-        // showTableData(data)
-    } catch (error) {
-        console.log(error);
-    }
+//         console.log(data)
+//         // showTableData(data)
+//     } catch (error) {
+//         console.log(error);
+//     }
 
-}
-getCharData();
+// }
+// getCharData();
 
 
 const showTableData = (data) => {
@@ -37,10 +37,10 @@ const showTableData = (data) => {
     let count = 1;
 
     data.forEach((e) => {
-        for (let i = 0; i < 5; i++) {
-            char[i] = e.characters[i];
-            // console.log(char[1]);
-        }
+        // for (let i = 0; i < 5; i++) {
+        //     char[i] = e.characters[i];
+        //     // console.log(char[1]);
+        // }
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         td1.innerHTML = count++;
