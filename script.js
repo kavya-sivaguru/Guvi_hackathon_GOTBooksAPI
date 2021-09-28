@@ -1,14 +1,12 @@
 const booksApiUrl = "https://www.anapioficeandfire.com/api/books";
-// const charApiUrl = "https://www.anapioficeandfire.com/api/characters";
-// let char = [];
 
+let charApi = [];
+let characters = ""
 
 const getBookData = async () => {
     try {
         const resp = await fetch(booksApiUrl);
         const data = await resp.json();
-
-        // console.log(data[0].name)
         showTableData(data)
     } catch (error) {
         console.log(error);
@@ -17,30 +15,18 @@ const getBookData = async () => {
 }
 getBookData();
 
-// const getCharData = async () => {
-//     try {
-//         const resp = await fetch(charApiUrl);
-//         const data = await resp.json();
-
-//         console.log(data)
-//         // showTableData(data)
-//     } catch (error) {
-//         console.log(error);
-//     }
-
-// }
-// getCharData();
 
 
-const showTableData = (data) => {
+
+
+
+let showTableData = (data) => {
     const tbody = document.getElementById("tbody")
     let count = 1;
 
     data.forEach((e) => {
-        // for (let i = 0; i < 5; i++) {
-        //     char[i] = e.characters[i];
-        //     // console.log(char[1]);
-        // }
+        
+       
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         td1.innerHTML = count++;
@@ -56,9 +42,30 @@ const showTableData = (data) => {
         td6.innerHTML = e.publisher;
         const td7 = document.createElement("td");
         td7.innerHTML = e.released;
-        td8 = document.createElement("td");
+        const td8 = document.createElement("td");
+       
         tr.append(td1, td2, td3, td4, td5, td6, td7, td8);
         tbody.append(tr);
+        
+        for (let i = 0; i < 10; i++) {
+            charApi[i] = e.characters[i];
+        }
+        
+        for (let i = 0; i < 5; i++) {
+            
+            let getCharData = async () => {
+                try {
+                    const resp = await fetch(charApi[i]);
+                    const data = await resp.json();
+                    characters += data.name;
+                    td8.innerHTML=characters;
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            getCharData();
+        }
 
     })
 
