@@ -39,9 +39,6 @@ let showTableData = (data) => {
         td7.innerHTML = e.released;
         const td8 = document.createElement("td");
 
-        tr.append(td1, td2, td3, td4, td5, td6, td7, td8);
-        tbody.append(tr);
-
         for (let i = 0; i < 5; i++) {
             charApi[i] = e.characters[i];
         }
@@ -61,7 +58,9 @@ let showTableData = (data) => {
             }
             getCharData();
         }
-
+        
+        tr.append(td1, td2, td3, td4, td5, td6, td7, td8);
+        tbody.append(tr);
     })
 
 }
