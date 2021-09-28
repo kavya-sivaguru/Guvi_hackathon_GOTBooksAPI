@@ -15,18 +15,13 @@ const getBookData = async () => {
 }
 getBookData();
 
-
-
-
-
-
 let showTableData = (data) => {
     const tbody = document.getElementById("tbody")
     let count = 1;
 
     data.forEach((e) => {
-        
-       
+
+
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         td1.innerHTML = count++;
@@ -43,22 +38,22 @@ let showTableData = (data) => {
         const td7 = document.createElement("td");
         td7.innerHTML = e.released;
         const td8 = document.createElement("td");
-       
+
         tr.append(td1, td2, td3, td4, td5, td6, td7, td8);
         tbody.append(tr);
-        
-        for (let i = 0; i < 10; i++) {
+
+        for (let i = 0; i < 5; i++) {
             charApi[i] = e.characters[i];
         }
-        
+
         for (let i = 0; i < 5; i++) {
-            
+
             let getCharData = async () => {
                 try {
                     const resp = await fetch(charApi[i]);
                     const data = await resp.json();
-                    characters += data.name;
-                    td8.innerHTML=characters;
+                    characters += data.name + " ";
+                    td8.innerHTML = characters + ".";
 
                 } catch (error) {
                     console.log(error);
